@@ -1,0 +1,1 @@
+EXCEL_FILE_NAME = "C:\\Users\\user\\Desktop\\正力（石道地区）\\配管長\\配管長実際.xlsm"
