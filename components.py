@@ -515,6 +515,87 @@ def gx_tugiwa_aa(msp, offset_x=0, offset_y=0):
     msp.add_line((base_x + 26450000, base_y + 10000000), (base_x + 26450000, base_y - 10000000))
     msp.add_line((base_x + 28150000, base_y + 10000000), (base_x + 28150000, base_y - 10000000))
 
+#GX両受短管AA
+def gx_ryouuke_tannkann_aa(msp, offset_x=0, offset_y=0):
+    base_x = 0 + offset_x
+    base_y = 0 + offset_y
+    #上受け口
+    msp.add_line((base_x, base_y + 7000000), (base_x + 7500000, base_y + 7000000))
+    msp.add_line((base_x + 7500000, base_y + 7000000), (base_x + 14500000, base_y))
+    #下受け口
+    msp.add_line((base_x, base_y - 7000000), (base_x + 7500000, base_y - 7000000))
+    msp.add_line((base_x + 7500000, base_y - 7000000), (base_x + 14500000, base_y))
+    #受け口中
+    msp.add_line((base_x + 2850000, base_y + 10000000), (base_x + 2850000, base_y - 10000000))
+    msp.add_line((base_x + 4550000, base_y + 10000000), (base_x + 4550000, base_y - 10000000))
+    #受け口円
+    msp.add_circle(center=(base_x + 3750000, base_y), radius=2500000)
+    #受け口上
+    msp.add_line((base_x + 14500000, base_y), (base_x + 21500000, base_y + 7000000))
+    msp.add_line((base_x + 21500000, base_y + 7000000), (base_x + 29000000, base_y + 7000000))
+    #受け口下
+    msp.add_line((base_x + 14500000, base_y), (base_x + 21500000, base_y - 7000000))
+    msp.add_line((base_x + 21500000, base_y - 7000000), (base_x + 29000000, base_y - 7000000))
+    #受け口円
+    msp.add_circle(center=(base_x + 25250000, base_y), radius=2500000)
+    #受け口中
+    msp.add_line((base_x + 24450000, base_y + 10000000), (base_x + 24450000, base_y - 10000000))
+    msp.add_line((base_x + 26150000, base_y + 10000000), (base_x + 26150000, base_y - 10000000))
+
+#GX両受短管下がり45°AA
+def gx_ryouuke_tannkann_down_45_aa(msp, offset_x=0, offset_y=0):
+    base_x = 0 + offset_x
+    base_y = 0 + offset_y
+    #上受け口
+    msp.add_line((base_x + 4950000, base_y + 4950000), (base_x + 10250000, base_y -350000))
+    msp.add_line((base_x + 10250000, base_y -350000), (base_x + 10250000, base_y - 10250000))
+    #下受け口
+    msp.add_line((base_x - 4950000, base_y - 4950000), (base_x + 350000, base_y - 10250000))
+    msp.add_line((base_x + 350000, base_y - 10250000), (base_x + 10250000, base_y - 10250000))
+    #受け口中
+    msp.add_line((base_x - 5060000, base_y - 9090000), (base_x + 9090000, base_y + 5060000))
+    msp.add_line((base_x - 3850000, base_y - 10290000), (base_x + 10290000, base_y + 3850000))
+    #受け口円
+    msp.add_circle(center=(base_x + 2650000, base_y - 2650000), radius=2500000)
+    #上受け口
+    msp.add_line((base_x + 10250000, base_y - 10250000), (base_x + 20150000, base_y - 10250000))
+    msp.add_line((base_x + 20150000, base_y - 10250000), (base_x + 25450000, base_y - 15550000))
+    #下受け口
+    msp.add_line((base_x + 10250000, base_y - 10250000), (base_x + 10250000, base_y - 20150000))
+    msp.add_line((base_x + 10250000, base_y - 20150000), (base_x + 15550000, base_y - 25450000))
+    #受け口円
+    msp.add_circle(center=(base_x + 17850000, base_y - 17850000), radius=2500000)
+    #受け口中
+    msp.add_line((base_x + 10250000, base_y - 24350000), (base_x + 24350000, base_y - 10250000))
+    msp.add_line((base_x + 11450000, base_y - 25550000), (base_x + 25550000, base_y - 11450000))
+
+#GX両受短管上がり45°AA
+def gx_ryouuke_tannkann_up_45_aa(msp, offset_x=0, offset_y=0):
+    base_x = 0 + offset_x
+    base_y = 0 + offset_y
+    #上受け口
+    msp.add_line((base_x + 4950000, base_y - 4950000), (base_x + 10250000, base_y + 350000))
+    msp.add_line((base_x + 10250000, base_y + 350000), (base_x + 10250000, base_y + 10250000))
+    #下受け口
+    msp.add_line((base_x - 4950000, base_y + 4950000), (base_x + 350000, base_y + 10250000))
+    msp.add_line((base_x + 350000, base_y + 10250000), (base_x + 10250000, base_y + 10250000))
+    #受け口中
+    msp.add_line((base_x - 5060000, base_y + 9090000), (base_x + 9090000, base_y - 5060000))
+    msp.add_line((base_x - 3850000, base_y + 10290000), (base_x + 10290000, base_y - 3850000))
+    #受け口円
+    msp.add_circle(center=(base_x + 2650000, base_y + 2650000), radius=2500000)
+    #上受け口
+    msp.add_line((base_x + 10250000, base_y + 10250000), (base_x + 20150000, base_y + 10250000))
+    msp.add_line((base_x + 20150000, base_y + 10250000), (base_x + 25450000, base_y + 15550000))
+    #下受け口
+    msp.add_line((base_x + 10250000, base_y + 10250000), (base_x + 10250000, base_y + 20150000))
+    msp.add_line((base_x + 10250000, base_y + 20150000), (base_x + 15550000, base_y + 25450000))
+    #受け口円
+    msp.add_circle(center=(base_x + 17850000, base_y + 17850000), radius=2500000)
+    #受け口中
+    msp.add_line((base_x + 10250000, base_y + 24350000), (base_x + 24350000, base_y + 10250000))
+    msp.add_line((base_x + 11450000, base_y + 25550000), (base_x + 25550000, base_y + 11450000))
+
 #GX受挿し片落管AB
 def gx_ukeoshikataochi_ab(msp, offset_x=0, offset_y=0):
     base_x = 0 + offset_x
@@ -3655,6 +3736,26 @@ def pe_franji_AF(msp, offset_x=0, offset_y=0):
     #フランジ部
     msp.add_line((base_x + 15000000, base_y + 5000000), (base_x + 15000000, base_y - 5000000))
 
+#ポリエチレン関係略図
+#EFフランジ短管FB
+def pe_franjitann_FB(msp, offset_x=0, offset_y=0):
+    base_x = 0 + offset_x
+    base_y = 0 + offset_y
+
+    #フランジ部
+    msp.add_line((base_x, base_y + 5000000), (base_x, base_y - 5000000))
+    #直部分
+    msp.add_line((base_x, base_y), (base_x + 10000000, base_y))
+
+#EFフランジ短管BF
+def pe_franjitann_BF(msp, offset_x=0, offset_y=0):
+    base_x = 0 + offset_x
+    base_y = 0 + offset_y
+    #直部分
+    msp.add_line((base_x, base_y), (base_x + 10000000, base_y))
+    #フランジ部
+    msp.add_line((base_x + 10000000, base_y + 5000000), (base_x + 10000000, base_y - 5000000))
+
 #ポリエチレンHB両受ベンドAA
 def pe_hb_ryouuke_bend_aa(msp, offset_x=0, offset_y=0):
     base_x = 0 + offset_x
@@ -3845,6 +3946,49 @@ def pe_ft_ryouuke_fire_aa(msp, offset_x=0, offset_y=0):
         'insert': (base_x + 8500000, base_y + 22000000),
         'height': 6000000,
     })
+
+#ポリエチレン両受F付チーズ(空気弁付き消火栓)AA
+def pe_ft_ryouuke_airfire_aa(msp, offset_x=0, offset_y=0):
+    base_x = 0 + offset_x
+    base_y = 0 + offset_y
+
+    #受け口（半円）
+    msp.add_arc(center=(base_x, base_y), radius=5000000, start_angle=270, end_angle=90)
+    #直部分
+    msp.add_line((base_x + 5000000, base_y), (base_x + 10000000, base_y))
+    #上直部分
+    msp.add_line((base_x + 10000000, base_y), (base_x + 10000000, base_y + 5000000))
+    #フランジ部分
+    msp.add_line((base_x + 5000000, base_y + 5000000), (base_x + 15000000, base_y + 5000000))
+    #直部分
+    msp.add_line((base_x + 10000000, base_y), (base_x + 15000000, base_y))
+    #受け口（半円）
+    msp.add_arc(center=(base_x + 20000000, base_y), radius=5000000, start_angle=90, end_angle=270)
+    #短管部分
+    msp.add_line((base_x + 5000000, base_y + 6000000), (base_x + 15000000, base_y + 6000000))
+    msp.add_line((base_x + 5000000, base_y + 11000000), (base_x + 15000000, base_y + 11000000))
+    msp.add_line((base_x + 7000000, base_y + 11000000), (base_x + 7000000, base_y + 6000000))
+    msp.add_line((base_x + 13000000, base_y + 11000000), (base_x + 13000000, base_y + 6000000))
+    #補修弁部分
+    msp.add_line((base_x + 5000000, base_y + 12000000), (base_x + 15000000, base_y + 12000000))
+    msp.add_line((base_x + 5000000, base_y + 17000000), (base_x + 15000000, base_y + 17000000))
+    msp.add_line((base_x + 5000000, base_y + 12000000), (base_x + 15000000, base_y + 17000000))
+    msp.add_line((base_x + 5000000, base_y + 17000000), (base_x + 15000000, base_y + 12000000))
+    #空気弁付消火栓部分
+    msp.add_line((base_x + 5000000, base_y + 18000000), (base_x + 15000000, base_y + 18000000))
+    msp.add_line((base_x + 5000000, base_y + 18000000), (base_x + 5000000, base_y + 21000000))
+    msp.add_circle(center=(base_x + 5000000, base_y + 25000000), radius=4000000)
+    msp.add_text("A", dxfattribs={
+        'insert': (base_x + 3500000, base_y + 22000000),
+        'height': 6000000,
+    })
+    msp.add_line((base_x + 15000000, base_y + 18000000), (base_x + 15000000, base_y + 21000000))
+    msp.add_circle(center=(base_x + 15000000, base_y + 25000000), radius=4000000)
+    msp.add_text("H", dxfattribs={
+        'insert': (base_x + 13500000, base_y + 22000000),
+        'height': 6000000,
+    })
+
 #ポリエチレン両挿F付チーズ（空気弁）BB
 def pe_ft_ryousashi_air_bb(msp, offset_x=0, offset_y=0):
     base_x = 0 + offset_x
@@ -3906,6 +4050,44 @@ def pe_ft_ryousashi_fire_bb(msp, offset_x=0, offset_y=0):
     msp.add_circle(center=(base_x + 8000000, base_y + 25000000), radius=4000000)
     msp.add_text("H", dxfattribs={
         'insert': (base_x + 6500000, base_y + 22000000),
+        'height': 6000000,
+    })
+
+#ポリエチレン両挿F付チーズ（空気弁付消火栓）BB
+def pe_ft_ryousashi_airfire_bb(msp, offset_x=0, offset_y=0):
+    base_x = 0 + offset_x
+    base_y = 0 + offset_y
+
+    #直部分
+    msp.add_line((base_x, base_y), (base_x + 8000000, base_y))
+    #上直部分
+    msp.add_line((base_x + 8000000, base_y), (base_x + 8000000, base_y + 5000000))
+    #フランジ部分
+    msp.add_line((base_x + 3000000, base_y + 5000000), (base_x + 13000000, base_y + 5000000))
+    #直部分
+    msp.add_line((base_x + 8000000, base_y), (base_x + 16000000, base_y))
+    #短管部分
+    msp.add_line((base_x + 3000000, base_y + 6000000), (base_x + 13000000, base_y + 6000000))
+    msp.add_line((base_x + 3000000, base_y + 11000000), (base_x + 13000000, base_y + 11000000))
+    msp.add_line((base_x + 5000000, base_y + 11000000), (base_x + 5000000, base_y + 6000000))
+    msp.add_line((base_x + 11000000, base_y + 11000000), (base_x + 11000000, base_y + 6000000))
+    #補修弁部分
+    msp.add_line((base_x + 3000000, base_y + 12000000), (base_x + 13000000, base_y + 12000000))
+    msp.add_line((base_x + 3000000, base_y + 17000000), (base_x + 13000000, base_y + 17000000))
+    msp.add_line((base_x + 3000000, base_y + 12000000), (base_x + 13000000, base_y + 17000000))
+    msp.add_line((base_x + 3000000, base_y + 17000000), (base_x + 13000000, base_y + 12000000))
+    #空気弁付消火栓部分
+    msp.add_line((base_x + 3000000, base_y + 18000000), (base_x + 13000000, base_y + 18000000))
+    msp.add_line((base_x + 3000000, base_y + 18000000), (base_x + 3000000, base_y + 21000000))
+    msp.add_circle(center=(base_x + 3000000, base_y + 25000000), radius=4000000)
+    msp.add_text("A", dxfattribs={
+        'insert': (base_x + 1500000, base_y + 22000000),
+        'height': 6000000,
+    })
+    msp.add_line((base_x + 13000000, base_y + 18000000), (base_x + 13000000, base_y + 21000000))
+    msp.add_circle(center=(base_x + 13000000, base_y + 25000000), radius=4000000)
+    msp.add_text("H", dxfattribs={
+        'insert': (base_x + 11500000, base_y + 22000000),
         'height': 6000000,
     })
 
@@ -4615,7 +4797,7 @@ def pe_vb_katauke_bend_11_down_ed_ab(msp, offset_x=0, offset_y=0):
     msp.add_line((base_x + 9800000, base_y - 1960000), (base_x + 17800000, base_y - 1960000))
 
 #ポリエチレンVB片受ベンド11.25°BA（下がりはじめ）
-def pe_vb_katauke_bend_11_down_ba(msp, offset_x=0, offset_y=0):
+def pe_vb_katauke_bend_11_down_st_ba(msp, offset_x=0, offset_y=0):
     base_x = 0 + offset_x
     base_y = 0 + offset_y
     #直部分
@@ -4661,7 +4843,7 @@ def pe_vb_katauke_bend_11_up_ed_ab(msp, offset_x=0, offset_y=0):
     msp.add_line((base_x + 9800000, base_y + 1960000), (base_x + 17800000, base_y + 1960000))
 
 #ポリエチレンVB片受ベンド11.25°BA（上がりはじめ）
-def pe_vb_katauke_bend_11_down_st_ba(msp, offset_x=0, offset_y=0):
+def pe_vb_katauke_bend_11_up_st_ba(msp, offset_x=0, offset_y=0):
     base_x = 0 + offset_x
     base_y = 0 + offset_y
     #直部分
@@ -5162,7 +5344,7 @@ def name(msp, item, offset_x=0, offset_y=0):
     base_x = 0 + offset_x
     base_y = 0 + offset_y
     msp.add_text(f"{item['名称']}", dxfattribs={
-        'insert': (base_x, base_y + 27150000),
+        'insert': (base_x, base_y + 26150000),
         'height': 6000000,
     })
 
@@ -5177,25 +5359,31 @@ def first_sokutenn(msp, first_item, route_name, offset_x=0, offset_y=0):
         display_text = f"{route_name} {first_item['測点']}"  # 'No.10+200'
         day_text = first_item['施工日付']
         msp.add_text(f"{display_text}", dxfattribs={
-        'insert': (base_x - 45000000, base_y + 30000000),
+        'insert': (base_x - 55000000, base_y + 13000000),
         'height': 6000000,
         })
         msp.add_text(f"{day_text}施工済み", dxfattribs={
-            'insert': (base_x - 45000000, base_y + 23800000),
+            'insert': (base_x - 55000000, base_y + 5000000),
             'height': 6000000,
-    })
+        })
+        #吹き出し線
+        msp.add_line((base_x - 55000000, base_y + 13000000), (base_x, base_y + 13000000))
+        msp.add_line((base_x, base_y + 13000000), (base_x + 8000000, base_y + 7000000))
     else:
         # インデックス0の測点2を使用
         display_text = f"{route_name} {first_item['測点2']}"  # 'No.10+350'
         day_text = first_item['施工日付']
         msp.add_text(f"{display_text}", dxfattribs={
-            'insert': (base_x - 45000000, base_y + 30000000),
+            'insert': (base_x - 55000000, base_y + 13000000),
             'height': 6000000,
         })
         msp.add_text(f"{day_text}施工済み", dxfattribs={
-            'insert': (base_x - 45000000, base_y + 23800000),
+            'insert': (base_x - 55000000, base_y + 5000000),
             'height': 6000000,
         })
+        #吹き出し線
+        msp.add_line((base_x - 55000000, base_y + 13000000), (base_x, base_y + 13000000))
+        msp.add_line((base_x, base_y + 13000000), (base_x + 8000000, base_y + 7000000))
 
 def flat_line1(msp, item, offset_x=0, offset_y=0):
     base_x = 0 + offset_x
