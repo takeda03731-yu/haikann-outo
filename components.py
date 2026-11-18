@@ -23,7 +23,7 @@ def read_excel_data(file_path: str) -> pd.DataFrame:
 #Excelデータを辞書に変換（材料Noの下の空白行の配管長・水平距離も含める）
 def excel_to_dict(file_path: str) -> List[Dict[str, Any]]:
     df = read_excel_data(file_path)
-    required_columns = ['材料No', '測点', '名称', '方向', '配管長', '水平距離', '施工日付']
+    required_columns = ['材料No', '測点', '名称', '方向', '配管長', '水平距離', '摘要', '施工日付']
     
     for col in required_columns:
         if col not in df.columns:
@@ -5250,7 +5250,7 @@ def meka_socket_aa(msp, offset_x=0, offset_y=0):
     msp.add_line((base_x + 10000000, base_y - 5000000), (base_x + 10000000, base_y - 7000000))
 
 #メカニカルキャップAE
-def meka_socket_ae(msp, offset_x=0, offset_y=0):
+def meka_cap_ae(msp, offset_x=0, offset_y=0):
     base_x = 0 + offset_x
     base_y = 0 + offset_y
     #受け口（半円）

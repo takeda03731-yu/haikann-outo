@@ -4423,6 +4423,42 @@ for i, item in enumerate(filtered_data):
                 cn.meka_socket_aa(msp, offset_x=x_count - 5000000, offset_y=y_count)
                 y_offsetcount += 1
                 today_count += 1
+
+    elif (
+        'メカニカルキャップ' in name
+    ):
+        if item['方向'] == 'SA':
+            cn.choose_zairyou_no(msp, item, offset_x=x_count + 2500000, offset_y=y_count + 15000000)
+            cn.name(msp, item, offset_x=x_count - 70000000, offset_y=y_count)
+            cn.meka_cap_ae(msp, offset_x=x_count, offset_y=y_count)
+            first_x = x_count
+            y_offsetcount += 1
+            today_count += 1
+            x_count += 2500000
+            today_xbase += 2500000
+        elif item['方向'] == 'AA':
+            if today_count == 0:
+                cn.meka_cap_ae(msp, offset_x=x_count, offset_y=y_count)
+                x_count += 2500000
+                today_count += 1
+                today_xbase += 2500000
+            else:      
+                cn.choose_zairyou_no(msp, item, offset_x=x_count + 2500000, offset_y=y_count + 15000000)
+                cn.name(msp, item,offset_x=x_count - 100000000, offset_y=y_count - y_count + 13500000 * y_offsetcount)
+                cn.meka_cap_ae(msp, offset_x=x_count - 5000000, offset_y=y_count)
+                y_offsetcount += 1
+                today_count += 1
+        elif item['方向'] == 'AE':
+            if today_count == 0:
+                cn.meka_cap_ae(msp, offset_x=x_count, offset_y=y_count)
+                today_count += 1
+            else:
+                cn.choose_zairyou_no(msp, item, offset_x=x_count + 2500000, offset_y=y_count + 15000000)
+                cn.name(msp, item,offset_x=x_count - 100000000, offset_y=y_count - y_count + 13500000 * y_offsetcount)
+                cn.meka_cap_ae(msp, offset_x=x_count - 5000000, offset_y=y_count)
+                y_offsetcount += 1
+                today_count += 1
+
 #全体の寸法を表示
 msp.add_line((today_xbase - 160000000 , y_count - y_count - 61000000), (today_xbase - 160000000, y_count - y_count - 77000000))
 msp.add_line((x_count, y_count - y_count - 61000000), (x_count, y_count - y_count - 77000000))

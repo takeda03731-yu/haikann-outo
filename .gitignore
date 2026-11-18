@@ -205,3 +205,13 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+
+# 開発環境
+.vscode/
+
+# 工事データ
+data/
+*.xls
+*.xlsx
+*.xlsm
+*.dxf
