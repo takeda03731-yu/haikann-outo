@@ -215,3 +215,6 @@ data/
 *.xlsx
 *.xlsm
 *.dxf
+
+# Claude Code 関連ファイル
+.claude/
