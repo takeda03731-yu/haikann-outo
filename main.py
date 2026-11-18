@@ -143,9 +143,9 @@ for i, item in enumerate(filtered_data):
         '不断水割' in name
     ):
         if item['方向'] == 'SF':
-            cn.choose_zairyou_no(msp, item, offset_x=x_count + 15000000, offset_y=y_count+17000000)
+            cn.choose_zairyou_no(msp, item, offset_x=x_count, offset_y=y_count+17000000)
             cn.under_pressure_drilling_work_sf(msp,offset_x=x_count, offset_y=y_count)
-            cn.name_sokutenn(msp, item, route_name, offset_x=x_count - 55000000, offset_y=y_count + 8000000 + 13500000 * y_offsetcount)
+            cn.name_sokutenn(msp, item, route_name, offset_x=x_count - 55000000, offset_y=y_count + 13500000 * y_offsetcount)
             first_x = x_count
             x_count += 16000000
             y_offsetcount += 1
@@ -164,7 +164,7 @@ for i, item in enumerate(filtered_data):
         elif item['方向'] == 'FE':
             cn.choose_zairyou_no(msp, item, offset_x=x_count + 15000000, offset_y=y_count+17000000)
             cn.under_pressure_drilling_work_fs(msp,offset_x=x_count, offset_y=y_count)
-            cn.name_sokutenn(msp, item, route_name, offset_x=x_count - 55000000, offset_y=y_count + 8000000 + 13500000 * y_offsetcount)
+            cn.name_sokutenn(msp, item, route_name, offset_x=x_count - 55000000, offset_y=y_count + 13500000 * y_offsetcount)
             first_x = x_count
             x_count += 16000000
             y_offsetcount += 1
@@ -197,7 +197,6 @@ for i, item in enumerate(filtered_data):
 
     elif (
         'GX形ダクタイル鋳鉄' in name
-        and '直管' in name
         and '（甲切管）' in name
         and '(V)' in name
         and down_45
@@ -212,7 +211,6 @@ for i, item in enumerate(filtered_data):
             y_count += -10250000 - (item['水平距離'] * 10000 / 2)            
     elif (
         'GX形ダクタイル鋳鉄' in name
-        and '直管' in name
         and '（甲切管）' in name
         and '(V)' in name
         and up_45
@@ -227,7 +225,6 @@ for i, item in enumerate(filtered_data):
             y_count += 10250000 + (item['水平距離'] * 10000 / 2)
     elif (
         'GX形ダクタイル鋳鉄' in name
-        and '直管' in name
         and '（甲切管）' in name
         and '(V)' in name
         and down_22
@@ -242,7 +239,6 @@ for i, item in enumerate(filtered_data):
             y_count += - 5550000 - ((item['配管長'] * 10000 / 2) ** 2 - (item['水平距離'] * 10000 / 2) ** 2) ** 0.5
     elif (
         'GX形ダクタイル鋳鉄' in name
-        and '直管' in name
         and '（甲切管）' in name
         and '(V)' in name
         and up_22
@@ -257,7 +253,6 @@ for i, item in enumerate(filtered_data):
             y_count += + 5550000 + ((item['配管長'] * 10000 / 2) ** 2 - (item['水平距離'] * 10000 / 2) ** 2) ** 0.5
     elif (
         'GX形ダクタイル鋳鉄' in name
-        and '直管' in name
         and '（甲切管）' in name
         and '(V)' in name
         and down_11
@@ -272,7 +267,6 @@ for i, item in enumerate(filtered_data):
             y_count += - 2830000 - ((item['配管長'] * 10000 / 2) ** 2 - (item['水平距離'] * 10000 / 2) ** 2) ** 0.5
     elif (
         'GX形ダクタイル鋳鉄' in name
-        and '直管' in name
         and '（甲切管）' in name
         and '(V)' in name
         and up_11
@@ -287,7 +281,7 @@ for i, item in enumerate(filtered_data):
             y_count += 2830000 + ((item['配管長'] * 10000 / 2) ** 2 - (item['水平距離'] * 10000 / 2) ** 2) ** 0.5
 
     elif (
-        'GX形ダクタイル鋳鉄' in name
+        'GX形' in name
         and '継ぎ輪' in name
     ):
         if item['方向'] == 'AA':
@@ -318,7 +312,7 @@ for i, item in enumerate(filtered_data):
                 )
 
     elif (
-        'GX形ダクタイル鋳鉄' in name
+        'GX形' in name
         and '短管' in name
         and '(V)' in name
         and down_45
@@ -353,7 +347,7 @@ for i, item in enumerate(filtered_data):
                 )
 
     elif (
-        'GX形ダクタイル鋳鉄' in name
+        'GX形' in name
         and '短管' in name
         and '(V)' in name
         and up_45
@@ -388,7 +382,7 @@ for i, item in enumerate(filtered_data):
                 )
 
     elif (
-        'GX形ダクタイル鋳鉄' in name
+        'GX形' in name
         and '短管' in name
     ):
         if item['方向'] == 'AA':
@@ -757,18 +751,16 @@ for i, item in enumerate(filtered_data):
                 cn.flat_line1(msp, item, offset_x=x_count + 6850000 - (item['配管長'] * 10000 / 2), offset_y=y_count - y_count - 61000000) 
     elif (
         'GX形ダクタイル鋳鉄' in name
-        and '直管' in name
     ):
         if item['方向'] == 'BA':
             cn.gx_tyokkann_ba(msp, offset_x=x_count, offset_y=y_count)
             x_count += 39750000
         elif item['方向'] == 'AB':
-            cn.gx_tyokkann_ab(msp, item, offset_x=x_count, offset_y=y_count)
+            cn.gx_tyokkann_ab(msp, offset_x=x_count, offset_y=y_count)
             x_count += 39750000
 
     elif (
-        'GX形ダクタイル鋳鉄' in name
-        and '曲管' in name
+        'GX形' in name
         and '45°' in name
         and '(V)' in name
         and '下がり' in name
@@ -873,8 +865,7 @@ for i, item in enumerate(filtered_data):
                 else:
                     cn.haikann_line2(msp, item, offset_x=x_count-11000000, offset_y=y_count - y_count - 54500000)    
     elif (
-        'GX形ダクタイル鋳鉄' in name
-        and '曲管' in name
+        'GX形' in name
         and '45°' in name
         and '(V)' in name
         and '上がり' in name
@@ -1280,8 +1271,8 @@ for i, item in enumerate(filtered_data):
             y_count += 3810000
 
     elif (
-        'GX形ダクタイル鋳鉄' in name
-        and '曲管' in name
+        'GX' in name
+        and ('45' in name or '22' in name or '11' in name)
     ):
         if item['方向'] == 'AA':
             if today_count == 0:
@@ -1291,7 +1282,7 @@ for i, item in enumerate(filtered_data):
                 today_count += 1
                 today_xbase += 39000000
             else:
-                cn.choose_zairyou_no(msp, item, offset_x=x_count + 10000000, offset_y=y_count + 15000000)
+                cn.choose_zairyou_no(msp, item, offset_x=x_count + 19500000, offset_y=y_count + 15000000)
                 cn.name_sokutenn(msp, item, route_name, offset_x=x_count - 90000000, offset_y=y_count - y_count + 13500000 * y_offsetcount)
                 cn.gx_hb_ryouuke_bend_aa(msp, offset_x=x_count, offset_y=y_count)
                 first_x = x_count
@@ -1303,10 +1294,10 @@ for i, item in enumerate(filtered_data):
                 haikann_sum += (item.get('配管長', 0) or 0) + (item.get('配管長2', 0) or 0)
                 msp.add_line((first_x, y_count - y_count - 45000000), (first_x, y_count - y_count - 61000000))
                 msp.add_line((second_x, y_count - y_count - 45000000), (second_x, y_count - y_count - 61000000))
-                msp.add_line((second_x - 10000000, y_count - y_count - 45000000), (second_x - 10000000, y_count - y_count - 61000000))
+                msp.add_line((second_x - 19500000, y_count - y_count - 45000000), (second_x - 19500000, y_count - y_count - 61000000))
                 msp.add_line((first_x, y_count - y_count - 61000000), (second_x, y_count - y_count - 61000000))
-                cn.flat_line1(msp, item, offset_x=x_count-15000000, offset_y=y_count - y_count - 61000000)
-                cn.flat_line2(msp, item, offset_x=x_count-5000000, offset_y=y_count - y_count - 61000000)
+                cn.flat_line1(msp, item, offset_x=x_count-29500000, offset_y=y_count - y_count - 61000000)
+                cn.flat_line2(msp, item, offset_x=x_count-9750000, offset_y=y_count - y_count - 61000000)
 
         elif item['方向'] == 'AB':
             if today_count == 0:
