@@ -1,1 +1,1 @@
-EXCEL_FILE_NAME = "C:\\Users\\user\\Desktop\\配管長\\配管長杵原本管.xlsm"
+EXCEL_FILE_NAME = "C:\\Users\\user\\Desktop\\土与丸(是石)地区ほか配水管布設替工事\\配管長\\配管長本番修正A.xlsm"

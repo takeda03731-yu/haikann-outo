@@ -97,7 +97,8 @@ def excel_to_dict(file_path: str) -> List[Dict[str, Any]]:
     
     return data_list
 
-#excel_to_dict関数で得た辞書をinputで指定した施工日付と、その前の日（1日前とは限らない）の施工日付の材料がある場合は、その材料一つを、どこから続くか分かるように一つだけ辞書に追加する。
+#excel_to_dict関数で得た辞書をinputで指定した施工日付と、その前の日（1日前とは限らない）の施工日付の材料を全部辞書に追加する。
+#略図として描くのは前の日の最後の材料（'継続元'）から。それより前の材料は'参照のみ'で、上がり/下がりの判定にだけ使う。
 
 def filter_by_construction_date_with_previous(pipe_data: List[Dict[str, Any]], target_date: str = None) -> List[Dict[str, Any]]:
     """
@@ -147,17 +148,41 @@ def filter_by_construction_date_with_previous(pipe_data: List[Dict[str, Any]], t
     print(f"指定日付のデータ件数: {len(target_data)}")
     print(f"指定日付の最初のインデックス: {first_target_index}")
     
-    # 辞書リストでの一つ上（インデックス - 1）の材料を探して追加
+    # 指定日の前の日（1日前とは限らない）の材料を全部追加する。
+    # - 直前の1件（インデックス - 1）: '継続元' = True（略図の描画開始位置）
+    # - それより前の同日の材料: '参照のみ' = True（上がり/下がり判定用。略図には描かない）
     if first_target_index is not None and first_target_index > 0:
         previous_index = first_target_index - 1
-        previous_material = pipe_data[previous_index].copy()
-        previous_material['継続元'] = True  # どこから続くかを示すフラグ
-        
-        print(f"一つ上のデータを追加: インデックス {previous_index}")
-        print(f"継続元として追加: 材料No.{previous_material['材料No']}, 測点: {previous_material['測点']}, 施工日付: {previous_material['施工日付']}")
-        
-        # 継続元を最初に追加
-        target_data.insert(0, previous_material)
+
+        # 前の日 = 指定日の1つ前の施工日付（辞書の出現順）
+        previous_date = available_dates[available_dates.index(target_date) - 1] \
+            if available_dates.index(target_date) > 0 else None
+
+        # 前の日の最初の材料のインデックス（直前の材料から遡って、前の日の範囲を求める）
+        # 施工日付が空の行は前の日の途中に挟まっているものとして含める
+        start_index = previous_index
+        if previous_date is not None:
+            for j in range(previous_index, -1, -1):
+                d = pipe_data[j]['施工日付']
+                if d is not None and str(d) != previous_date:
+                    break
+                start_index = j
+
+        previous_data = []
+        for j in range(start_index, previous_index + 1):
+            material = pipe_data[j].copy()
+            if j == previous_index:
+                material['継続元'] = True  # どこから続くかを示すフラグ（描画開始）
+            else:
+                material['参照のみ'] = True  # 判定用。描画しない
+            previous_data.append(material)
+
+        print(f"前の日のデータを追加: インデックス {start_index}〜{previous_index} ({len(previous_data)}件)")
+        last_prev = previous_data[-1]
+        print(f"継続元として追加: 材料No.{last_prev['材料No']}, 測点: {last_prev['測点']}, 施工日付: {last_prev['施工日付']}")
+
+        # 前の日の材料を先頭に追加
+        target_data = previous_data + target_data
     else:
         print("一つ上のデータがありません（最初のデータです）")
     

@@ -66,18 +66,23 @@ flat_sum = 0
 haikann_sum = 0
 
 
-if filtered_data[0]['材料No'] is None:
+# 略図の描画開始位置: '継続元'の材料（前の日の最後の材料）。それより前は'参照のみ'で描かない。
+draw_start = next((i for i, d in enumerate(filtered_data) if d.get('継続元')), 0)
+
+if filtered_data[draw_start]['材料No'] is None:
     base_x = 0 + x_count
     base_y = 0 + y_count
-    msp.add_text(f"{route_name} {filtered_data[0]['測点']}", dxfattribs={
+    msp.add_text(f"{route_name} {filtered_data[draw_start]['測点']}", dxfattribs={
     'insert': (base_x -50000000, base_y + 20000000),
     'height': 6000000,
     })
 else:
-    first_item = filtered_data[0]
+    first_item = filtered_data[draw_start]
     cn.first_sokutenn(msp, first_item, route_name, offset_x=x_count, offset_y=y_count)
 
 for i, item in enumerate(filtered_data):
+    if i < draw_start:
+        continue  # 参照のみの材料は描画しない（prev1〜3の判定にはfiltered_data全体を使う）
     prev1 = filtered_data[i-1] if i >= 1 else None  # 1個前
     prev2 = filtered_data[i-2] if i >= 2 else None  # 2個前
     prev3 = filtered_data[i-3] if i >= 3 else None  # 3個前
@@ -1894,10 +1899,6 @@ for i, item in enumerate(filtered_data):
             if today_count == 0:
                 cn.pe_tyokkann_kou_ba(msp, item, offset_x=x_count, offset_y=y_count)
                 x_count += 5000000 + (item['配管長'] * 10000 / 2)
-                msp.add_text(f"甲{item['配管長']}", dxfattribs={
-                'insert': (x_count - 10000000 + (5000000 + (item['配管長'] * 10000 / 2)) / 2, y_count - 12000000),
-                'height': 6000000,
-                })
                 today_xbase += 5000000 + (item['配管長'] * 10000 / 2)
                 today_count += 1
             else:
@@ -1921,10 +1922,6 @@ for i, item in enumerate(filtered_data):
             if today_count == 0:
                 cn.pe_tyokkann_kou_ab(msp, item, offset_x=x_count, offset_y=y_count)
                 x_count += 5000000 + (item['配管長'] * 10000 / 2)
-                msp.add_text(f"甲{item['配管長']}", dxfattribs={
-                'insert': (x_count - 10000000 + (5000000 + (item['配管長'] * 10000 / 2)) / 2, y_count - 12000000),
-                'height': 6000000,
-                })
                 today_xbase += 5000000 + (item['配管長'] * 10000 / 2)
                 today_count += 1
             else:
