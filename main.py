@@ -195,6 +195,7 @@ for i, item in enumerate(filtered_data):
             today_xbase = 8000000
             second_x = x_count
 
+#GX関係
     elif (
         'GX形ダクタイル鋳鉄' in name
         and '（甲切管）' in name
@@ -457,8 +458,7 @@ for i, item in enumerate(filtered_data):
                 cn.flat_line1(msp, item, offset_x=x_count - 11200000, offset_y=y_count - y_count - 61000000)
 
     elif (
-        '直管' in name
-        and '（乙切管）' in name
+        '（乙切管）' in name
         and '(V)' in name
         and down_90
     ):
@@ -483,8 +483,7 @@ for i, item in enumerate(filtered_data):
                 flat_sum += (item.get('水平距離', 0) or 0) + (item.get('水平距離2', 0) or 0)
                 haikann_sum += (item.get('配管長', 0) or 0) + (item.get('配管長2', 0) or 0)
     elif (
-        '直管' in name
-        and '（乙切管）' in name
+        '（乙切管）' in name
         and '(V)' in name
         and up_90
     ):
@@ -509,8 +508,7 @@ for i, item in enumerate(filtered_data):
                 flat_sum += (item.get('水平距離', 0) or 0) + (item.get('水平距離2', 0) or 0)
                 haikann_sum += (item.get('配管長', 0) or 0) + (item.get('配管長2', 0) or 0)
     elif (
-        '直管' in name
-        and '（乙切管）' in name
+        '（乙切管）' in name
         and '(V)' in name
         and down_45
     ):
@@ -548,8 +546,7 @@ for i, item in enumerate(filtered_data):
                 else:
                     cn.haikann_line1(msp, item, offset_x=x_count -9200000 - (item['水平距離'] * 10000 / 2), offset_y=y_count - y_count - 42000000)                   
     elif (
-        '直管' in name
-        and '（乙切管）' in name
+        '（乙切管）' in name
         and '(V)' in name
         and up_45
     ):
@@ -587,8 +584,7 @@ for i, item in enumerate(filtered_data):
                 else:
                     cn.haikann_line1(msp, item, offset_x=x_count -9200000 - (item['水平距離'] * 10000 / 2), offset_y=y_count - y_count - 42000000)        
     elif (
-        '直管' in name
-        and '（乙切管）' in name
+        '（乙切管）' in name
         and '(V)' in name
         and down_22
     ):
@@ -631,8 +627,7 @@ for i, item in enumerate(filtered_data):
                     cn.haikann_line1(msp, item, offset_x=x_count -9200000 - (item['水平距離'] * 10000 / 2), offset_y=y_count - y_count - 42000000)
 
     elif (
-        '直管' in name
-        and '（乙切管）' in name
+        '（乙切管）' in name
         and '(V)' in name
         and up_22
     ):
@@ -675,8 +670,7 @@ for i, item in enumerate(filtered_data):
                     cn.haikann_line1(msp, item, offset_x=x_count -9200000 - (item['水平距離'] * 10000 / 2), offset_y=y_count - y_count - 42000000)
 
     elif (
-        '直管' in name
-        and '（乙切管）' in name
+        '（乙切管）' in name
         and '(V)' in name
         and down_11
     ):
@@ -719,8 +713,7 @@ for i, item in enumerate(filtered_data):
                     cn.haikann_line1(msp, item, offset_x=x_count -9200000 - (item['水平距離'] * 10000 / 2), offset_y=y_count - y_count - 42000000)
 
     elif (
-        '直管' in name
-        and '（乙切管）' in name
+        '（乙切管）' in name
         and '(V)' in name
         and up_11
     ):
@@ -763,8 +756,7 @@ for i, item in enumerate(filtered_data):
                     cn.haikann_line1(msp, item, offset_x=x_count -9200000 - (item['水平距離'] * 10000 / 2), offset_y=y_count - y_count - 42000000)
 
     elif (
-        '直管' in name
-        and '（乙切管）' in name
+        '（乙切管）' in name
     ):
         if item['方向'] == 'BB':
             if today_count == 0:
@@ -1456,27 +1448,217 @@ for i, item in enumerate(filtered_data):
                 else:
                     cn.haikann_line2(msp, item, offset_x=x_count-12600000, offset_y=y_count - y_count - 54500000)
     elif (
-        'GX形ダクタイル鋳鉄' in name
-        and '曲管' in name
-        and '22.5°' in name
+        'GX形' in name
+        and '22' in name
         and '（V）' in name
         and down_22
     ):
         if item['方向'] == 'AA':
-            cn.gx_vb_ryouuke_bend_22_down_ed_aa(msp, offset_x=x_count, offset_y=y_count)
-            x_count += 37510000
-            y_count += - 7460000
+            if today_count == 0:
+                cn.gx_vb_ryouuke_bend_22_down_ed_aa(msp, offset_x=x_count, offset_y=y_count)
+                x_count += 37520000
+                y_count += -7460000
+                today_count += 1
+                today_xbase += 37520000
+            else:
+                cn.choose_zairyou_no(msp, item, offset_x=x_count + 21000000, offset_y=y_count + 11180000)
+                cn.name_sokutenn(msp, item, route_name, offset_x=x_count - 90000000, offset_y=y_count - y_count + 13500000 * y_offsetcount)
+                cn.gx_vb_ryouuke_bend_22_down_ed_aa(msp, offset_x=x_count, offset_y=y_count)
+                first_x = x_count
+                x_count += 37520000
+                y_count += -7460000
+                y_offsetcount += 1
+                today_count += 1
+                second_x = x_count
+                flat_sum += (item.get('水平距離', 0) or 0) + (item.get('水平距離2', 0) or 0)
+                haikann_sum += (item.get('配管長', 0) or 0) + (item.get('配管長2', 0) or 0)
+                msp.add_line((first_x, y_count - y_count - 45000000), (first_x, y_count - y_count - 61000000))
+                msp.add_line((second_x, y_count - y_count - 45000000), (second_x, y_count - y_count - 61000000))
+                msp.add_line((second_x - 19500000, y_count - y_count - 45000000), (second_x - 19500000, y_count - y_count - 61000000))
+                msp.add_line((first_x, y_count - y_count - 61000000), (second_x, y_count - y_count - 61000000))
+                cn.flat_line1(msp, item, offset_x=x_count-26950000, offset_y=y_count - y_count - 61000000)
+                cn.flat_line2(msp, item, offset_x=x_count-9750000, offset_y=y_count - y_count - 61000000)
+                if item['水平距離'] == item['配管長']:
+                    pass
+                else:
+                    cn.haikann_line1(msp, item, offset_x=x_count-34450000, offset_y=y_count - y_count - 54500000)                
+                if item['水平距離2'] == item['配管長2']:
+                    pass
+                else:
+                    cn.haikann_line2(msp, item, offset_x=x_count-12600000, offset_y=y_count - y_count - 54500000)
+        elif item['方向'] == 'AB':
+            if today_count == 0:
+                cn.gx_vb_katauke_bend_22_down_ed_ab(msp, offset_x=x_count, offset_y=y_count)
+                x_count += 26020000
+                y_count += -7460000
+                today_count += 1
+                today_xbase += 26020000
+            else:
+                cn.choose_zairyou_no(msp, item, offset_x=x_count + 18000000, offset_y=y_count + 11180000)
+                cn.name_sokutenn(msp, item, route_name, offset_x=x_count - 90000000, offset_y=y_count - y_count + 13500000 * y_offsetcount)
+                cn.gx_vb_katauke_bend_22_down_ed_ab(msp, offset_x=x_count, offset_y=y_count)
+                first_x = x_count
+                x_count += 26020000
+                y_count += -7460000
+                y_offsetcount += 1
+                today_count += 1
+                second_x = x_count
+                flat_sum += (item.get('水平距離', 0) or 0) + (item.get('水平距離2', 0) or 0)
+                haikann_sum += (item.get('配管長', 0) or 0) + (item.get('配管長2', 0) or 0)
+                msp.add_line((first_x, y_count - y_count - 45000000), (first_x, y_count - y_count - 61000000))
+                msp.add_line((second_x, y_count - y_count - 45000000), (second_x, y_count - y_count - 61000000))
+                msp.add_line((second_x - 16020000, y_count - y_count - 45000000), (second_x - 16020000, y_count - y_count - 61000000))
+                msp.add_line((first_x, y_count - y_count - 61000000), (second_x, y_count - y_count - 61000000))
+                cn.flat_line1(msp, item, offset_x=x_count-19400000, offset_y=y_count - y_count - 61000000)
+                cn.flat_line2(msp, item, offset_x=x_count-8000000, offset_y=y_count - y_count - 61000000)
+                if item['水平距離'] == item['配管長']:
+                    pass
+                else:
+                    cn.haikann_line1(msp, item, offset_x=x_count-26950000, offset_y=y_count - y_count - 54500000)                
+                if item['水平距離2'] == item['配管長2']:
+                    pass
+                else:
+                    cn.haikann_line2(msp, item, offset_x=x_count-12600000, offset_y=y_count - y_count - 54500000)
+        elif item['方向'] == 'BA':
+            if today_count == 0:
+                cn.gx_vb_katauke_bend_22_down_ed_ba(msp, offset_x=x_count, offset_y=y_count)
+                x_count += 26870000
+                y_count += -3060000
+                today_count += 1
+                today_xbase += 26870000
+            else:
+                cn.choose_zairyou_no(msp, item, offset_x=x_count + 12000000, offset_y=y_count + 11180000)
+                cn.name_sokutenn(msp, item, route_name, offset_x=x_count - 90000000, offset_y=y_count - y_count + 13500000 * y_offsetcount)
+                cn.gx_vb_katauke_bend_22_down_ed_ba(msp, offset_x=x_count, offset_y=y_count)
+                first_x = x_count
+                x_count += 26870000
+                y_count += -3060000
+                y_offsetcount += 1
+                today_count += 1
+                second_x = x_count
+                flat_sum += (item.get('水平距離', 0) or 0) + (item.get('水平距離2', 0) or 0)
+                haikann_sum += (item.get('配管長', 0) or 0) + (item.get('配管長2', 0) or 0)
+                msp.add_line((first_x, y_count - y_count - 45000000), (first_x, y_count - y_count - 61000000))
+                msp.add_line((second_x, y_count - y_count - 45000000), (second_x, y_count - y_count - 61000000))
+                msp.add_line((second_x - 10000000, y_count - y_count - 45000000), (second_x - 10000000, y_count - y_count - 61000000))
+                msp.add_line((first_x, y_count - y_count - 61000000), (second_x, y_count - y_count - 61000000))
+                cn.flat_line1(msp, item, offset_x=x_count-16800000, offset_y=y_count - y_count - 61000000)
+                cn.flat_line2(msp, item, offset_x=x_count-5000000, offset_y=y_count - y_count - 61000000)
+                if item['水平距離'] == item['配管長']:
+                    pass
+                else:
+                    cn.haikann_line1(msp, item, offset_x=x_count-24400000, offset_y=y_count - y_count - 54500000)                
+                if item['水平距離2'] == item['配管長2']:
+                    pass
+                else:
+                    cn.haikann_line2(msp, item, offset_x=x_count-12600000, offset_y=y_count - y_count - 54500000)
+
     elif (
-        'GX形ダクタイル鋳鉄' in name
-        and '曲管' in name
-        and '22.5°' in name
+        'GX形' in name
+        and '22' in name
         and '（V）' in name
         and up_22
     ):
         if item['方向'] == 'AA':
-            cn.gx_vb_ryouuke_bend_22_up_ed_aa(msp, offset_x=x_count, offset_y=y_count)
-            x_count += 37510000
-            y_count += 7460000
+            if today_count == 0:
+                cn.gx_vb_ryouuke_bend_22_up_ed_aa(msp, offset_x=x_count, offset_y=y_count)
+                x_count += 37520000
+                y_count += 7460000
+                today_count += 1
+                today_xbase += 37520000
+            else:
+                cn.choose_zairyou_no(msp, item, offset_x=x_count + 18000000, offset_y=y_count + 18820000)
+                cn.name_sokutenn(msp, item, route_name, offset_x=x_count - 90000000, offset_y=y_count - y_count + 13500000 * y_offsetcount)
+                cn.gx_vb_ryouuke_bend_22_up_ed_aa(msp, offset_x=x_count, offset_y=y_count)
+                first_x = x_count
+                x_count += 37520000
+                y_count += 7460000
+                y_offsetcount += 1
+                today_count += 1
+                second_x = x_count
+                flat_sum += (item.get('水平距離', 0) or 0) + (item.get('水平距離2', 0) or 0)
+                haikann_sum += (item.get('配管長', 0) or 0) + (item.get('配管長2', 0) or 0)
+                msp.add_line((first_x, y_count - y_count - 45000000), (first_x, y_count - y_count - 61000000))
+                msp.add_line((second_x, y_count - y_count - 45000000), (second_x, y_count - y_count - 61000000))
+                msp.add_line((second_x - 19500000, y_count - y_count - 45000000), (second_x - 19500000, y_count - y_count - 61000000))
+                msp.add_line((first_x, y_count - y_count - 61000000), (second_x, y_count - y_count - 61000000))
+                cn.flat_line1(msp, item, offset_x=x_count-26950000, offset_y=y_count - y_count - 61000000)
+                cn.flat_line2(msp, item, offset_x=x_count-8200000, offset_y=y_count - y_count - 61000000)
+                if item['水平距離'] == item['配管長']:
+                    pass
+                else:
+                    cn.haikann_line1(msp, item, offset_x=x_count-34450000, offset_y=y_count - y_count - 54500000)                
+                if item['水平距離2'] == item['配管長2']:
+                    pass
+                else:
+                    cn.haikann_line2(msp, item, offset_x=x_count-12600000, offset_y=y_count - y_count - 54500000)
+        elif item['方向'] == 'AB':
+            if today_count == 0:
+                cn.gx_vb_katauke_bend_22_up_ed_ab(msp, offset_x=x_count, offset_y=y_count)
+                x_count += 2602000
+                y_count += 7460000
+                today_count += 1
+                today_xbase += 26020000
+            else:
+                cn.choose_zairyou_no(msp, item, offset_x=x_count + 18020000, offset_y=y_count + 18820000)
+                cn.name_sokutenn(msp, item, route_name, offset_x=x_count - 90000000, offset_y=y_count - y_count + 13500000 * y_offsetcount)
+                cn.gx_vb_katauke_bend_22_up_ed_ab(msp, offset_x=x_count, offset_y=y_count)
+                first_x = x_count
+                x_count += 26020000
+                y_count += 7460000
+                y_offsetcount += 1
+                today_count += 1
+                second_x = x_count
+                flat_sum += (item.get('水平距離', 0) or 0) + (item.get('水平距離2', 0) or 0)
+                haikann_sum += (item.get('配管長', 0) or 0) + (item.get('配管長2', 0) or 0)
+                msp.add_line((first_x, y_count - y_count - 45000000), (first_x, y_count - y_count - 61000000))
+                msp.add_line((second_x, y_count - y_count - 45000000), (second_x, y_count - y_count - 61000000))
+                msp.add_line((second_x - 16020000, y_count - y_count - 45000000), (second_x - 16020000, y_count - y_count - 61000000))
+                msp.add_line((first_x, y_count - y_count - 61000000), (second_x, y_count - y_count - 61000000))
+                cn.flat_line1(msp, item, offset_x=x_count-19400000, offset_y=y_count - y_count - 61000000)
+                cn.flat_line2(msp, item, offset_x=x_count-6500000, offset_y=y_count - y_count - 61000000)
+                if item['水平距離'] == item['配管長']:
+                    pass
+                else:
+                    cn.haikann_line1(msp, item, offset_x=x_count-27000000, offset_y=y_count - y_count - 54500000)                
+                if item['水平距離2'] == item['配管長2']:
+                    pass
+                else:
+                    cn.haikann_line2(msp, item, offset_x=x_count-12600000, offset_y=y_count - y_count - 54500000)
+        elif item['方向'] == 'BA':
+            if today_count == 0:
+                cn.gx_vb_katauke_bend_22_up_ed_ba(msp, offset_x=x_count, offset_y=y_count)
+                x_count += 26870000
+                y_count += 3060000
+                today_count += 1
+                today_xbase += 26870000
+            else:
+                cn.choose_zairyou_no(msp, item, offset_x=x_count + 7370000, offset_y=y_count + 18060000)
+                cn.name_sokutenn(msp, item, route_name, offset_x=x_count - 90000000, offset_y=y_count - y_count + 13500000 * y_offsetcount)
+                cn.gx_vb_katauke_bend_22_up_ed_ba(msp, offset_x=x_count, offset_y=y_count)
+                first_x = x_count
+                x_count += 26870000
+                y_count += 3060000
+                y_offsetcount += 1
+                today_count += 1
+                second_x = x_count
+                flat_sum += (item.get('水平距離', 0) or 0) + (item.get('水平距離2', 0) or 0)
+                haikann_sum += (item.get('配管長', 0) or 0) + (item.get('配管長2', 0) or 0)
+                msp.add_line((first_x, y_count - y_count - 45000000), (first_x, y_count - y_count - 61000000))
+                msp.add_line((second_x, y_count - y_count - 45000000), (second_x, y_count - y_count - 61000000))
+                msp.add_line((second_x - 10000000, y_count - y_count - 45000000), (second_x - 10000000, y_count - y_count - 61000000))
+                msp.add_line((first_x, y_count - y_count - 61000000), (second_x, y_count - y_count - 61000000))
+                cn.flat_line1(msp, item, offset_x=x_count-16850000, offset_y=y_count - y_count - 61000000)
+                cn.flat_line2(msp, item, offset_x=x_count-3400000, offset_y=y_count - y_count - 61000000)
+                if item['水平距離'] == item['配管長']:
+                    pass
+                else:
+                    cn.haikann_line1(msp, item, offset_x=x_count-24400000, offset_y=y_count - y_count - 54500000)                
+                if item['水平距離2'] == item['配管長2']:
+                    pass
+                else:
+                    cn.haikann_line2(msp, item, offset_x=x_count-12600000, offset_y=y_count - y_count - 54500000)
+                    
     elif (
         'GX形ダクタイル鋳鉄' in name
         and '曲管' in name
@@ -1576,6 +1758,7 @@ for i, item in enumerate(filtered_data):
                 cn.flat_line1(msp, item, offset_x=x_count-17800000, offset_y=y_count - y_count - 61000000)
                 cn.flat_line2(msp, item, offset_x=x_count-2400000, offset_y=y_count - y_count - 61000000)
 
+#ポリエチレン管
     elif (
         'EF' in name
         and '直管' in name
